@@ -4,14 +4,15 @@
  * Linked Lists
  * 4-12-18
  */
+package edu.wwcc.CS_241.Jumper.Jonathan.SingleLL;
 
 /**
  * NODE CLASS
  */
 @SuppressWarnings("WeakerAccess")
-public class Node<T> {
-    private Node<T> next;
-    private T value;
+public class Node<V> {
+    private Node<V> next;
+    private V value;
 
     /**
      * Default value constructor.
@@ -25,61 +26,65 @@ public class Node<T> {
      * Value only constructor.
      *
      * @param value
-     *     <T>
+     *     <V>
      */
-    public Node(T value)
+    public Node(V value)
     {
         this.value = value;
         this.next = null;
-        // this(value, null);
     }
 
     /**
      * Optional all value constructor.
      *
      * @param value
-     *     <T>
+     *     <V>
      * @param next
-     *     Node<T>
+     *     Node<V>
      */
-    public Node(T value, Node<T> next)
+    public Node(V value, Node<V> next)
     {
         this.value = value;
         this.next = next;
     }
+    // Begin Getters and Setters
 
     /**
-     * @return Node<T>
+     * @return Node<V>
      */
-    public Node<T> getNext()
+    public Node<V> getNext()
     {
         return this.next;
     }
 
     /**
      * @param next
-     *     Node<T>
+     *     Node<V>
+     *
+     * @return Node<V>
      */
-    public void setNext(Node<T> next)
+    public Node<V> setNext(Node<V> next)
     {
         this.next = next;
+        return this;
     }
-    // Begin Getters and Setters
 
     /**
-     * @return <T>
+     * @return <V>
      */
-    public T getValue()
+    public V getValue()
     {
         return this.value;
     }
 
     /**
-     * @param value
-     *     T
+     * @param value V
+     *
+     * @return Node<V>
      */
-    public void setValue(T value)
+    public Node<V> setValue(V value)
     {
         this.value = value;
+        return this;
     }
 }
