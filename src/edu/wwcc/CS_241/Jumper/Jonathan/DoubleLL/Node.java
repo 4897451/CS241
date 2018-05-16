@@ -9,10 +9,6 @@ package edu.wwcc.CS_241.Jumper.Jonathan.DoubleLL;/*
 @SuppressWarnings("WeakerAccess")
 public class Node<V>
 {
-    private Node<V> next;
-    private Node<V> prev;
-    private V value;
-
     /**
      * Default value constructor.
      */
@@ -58,27 +54,11 @@ public class Node<V>
     }
 
     /**
-     * @param node Node<V>
-     */
-    public void setNext(Node<V> node)
-    {
-        this.next = node;
-    }
-
-    /**
      * @return Node<V>
      */
     public Node<V> getPrev()
     {
         return prev;
-    }
-
-    /**
-     * @param node Node<V>
-     */
-    public void setPrev(Node<V> node)
-    {
-        this.prev = node;
     }
 
     /**
@@ -90,14 +70,37 @@ public class Node<V>
     }
 
     /**
-     * @return String
+     * @param node Node<V>
+     *
+     * @return Node<V> Fluent interface.
      */
-    public String toString()
+    public Node<V> setNext(Node<V> node)
     {
-        String result = "Value(" + value + ")--->";
-        if (null != next) {
-            result += next.toString();
-        }
-        return result;
+        this.next = node;
+        return this;
     }
+
+    /**
+     * @param node Node<V>
+     *
+     * @return Node<V> Fluent interface.
+     */
+    public Node<V> setPrev(Node<V> node)
+    {
+        this.prev = node;
+        return this;
+    }
+
+    /**
+     * Holds reference to next node.
+     */
+    private Node<V> next;
+    /**
+     * Holds reference to prev node.
+     */
+    private Node<V> prev;
+    /**
+     * Holds the value that makes the node special.
+     */
+    private V value;
 }
