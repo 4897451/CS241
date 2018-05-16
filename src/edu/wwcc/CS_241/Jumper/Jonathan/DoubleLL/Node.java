@@ -50,21 +50,6 @@ public class Node<V>
     }
 
     /**
-     * Tail recursive method to find last Node in list.
-     *
-     * @return Node<V>
-     */
-    public Node<V> getLast()
-    {
-        Node<V> next = this.next;
-        if (null != next) {
-            // Recursive call.
-            next = next.getLast();
-        }
-        return next;
-    }
-
-    /**
      * @return Node<V>
      */
     public Node<V> getNext()
