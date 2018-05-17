@@ -41,7 +41,7 @@ public class Main {
             ++i;
         } while (i < num);
         System.out.println();
-        System.out.println("*** QUEUE METHODS TEST ***");
+        System.out.println("*** BEGIN QUEUE METHODS TEST ***");
         System.out.println();
         System.out.println(queue);
         System.out.println("LinkedList length = " + queue.size());

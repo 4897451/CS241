@@ -41,7 +41,7 @@ public class Main {
             ++i;
         } while (i < num);
         System.out.println();
-        System.out.println("*** Stack methods testing ***");
+        System.out.println("*** BEGIN STACK METHODS TEST ***");
         System.out.println();
         System.out.println(stack);
         System.out.println("LinkedList size = " + stack.size());
