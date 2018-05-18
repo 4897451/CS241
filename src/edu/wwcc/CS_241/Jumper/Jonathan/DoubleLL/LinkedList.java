@@ -29,6 +29,8 @@ public class LinkedList<V>
 
     /**
      * Constructor with Node param.
+     * <p>
+     * Jonathan speak.
      *
      * @param newNode Node<V>
      */
@@ -47,7 +49,10 @@ public class LinkedList<V>
      */
     public LinkedList<V> append(V value)
     {
-        return append(new Node<>(value));
+        return append(new Node<>(value)); //creates new node and call other append() method
+        // when 1st append() method is called
+        // this uses node constructor from Node(class)
+        // so, the new node has the value and the pointers are both null at this point.
     }
 
     /**
