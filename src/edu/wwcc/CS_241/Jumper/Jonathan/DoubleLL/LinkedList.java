@@ -59,15 +59,13 @@ public class LinkedList<V>
      */
     public LinkedList<V> append(Node<V> newNode)
     {
-        if (null != node) {
+        if (null != this.node) {
             //find the end of the ll and append to it.
-            Node<V> last = getLast();
-            if (null != last) {
-                last.setNext(newNode);
-                newNode.setPrev(last);
-            }
+            Node<V> last = getLast(); //used to be Traveler (last)
+            last.setNext(newNode);
+            newNode.setPrev(last);
         } else {
-            node = newNode;
+            this.node = newNode;
         }
         ++this.count;
         return this;
@@ -91,10 +89,10 @@ public class LinkedList<V>
      */
     public Node<V> getLast()
     {
-        if (null != node) {
+        if (null != this.node) {
             // Start with first Node.
-            Node<V> last = node;
-            while (null != last.getNext()) {
+            Node<V> last = this.node;
+            while (null != last.getNext()) { // replaces Next pointer value in LL
                 last = last.getNext();
             }
             return last;
@@ -308,6 +306,8 @@ public class LinkedList<V>
     }
 
     /**
+     * This just returns the value of count property (method in jonathan speak)
+     *
      * @return int
      */
     public int size()
