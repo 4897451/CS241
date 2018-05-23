@@ -17,6 +17,7 @@ public class Node<V extends Comparable<V>> implements Comparable<Node<V>>
      */
     public Node()
     {
+        this.ancestor = null;
         this.value = null;
         this.left = null;
         this.right = null;
@@ -80,10 +81,55 @@ public class Node<V extends Comparable<V>> implements Comparable<Node<V>>
         this.left = left;
     }
 
+    /**
+     * Compare this node with another node.
+     * <p>
+     * By default Java would use all the properties (ancestor, left, right, and value) instead it needs to use just
+     * value property so must override this method.
+     *
+     * @param other The other node.
+     *
+     * @return Returns positive integer when this node is greater than other node, negative integer when less than, and
+     * 0 when they are the same.
+     */
     @Override
     public int compareTo(Node<V> other)
     {
         return this.getValue().compareTo(other.getValue());
+    }
+
+    /**
+     * Override to make equals work correctly for Nodes.
+     * <p>
+     * Java way of comparing objects for equal is incorrect for Node so it must be overridden.
+     * <p>
+     * HashCode() needs to be overridden as well for the same reasons See additional info in Node::compareTo() method.
+     *
+     * @param other The other object to check equals with current node.
+     *
+     * @return Returns true if the nodes are the same, else false.
+     * @see Node::compareTo()
+     * @see Node::hashCode()
+     */
+    @Override
+    public boolean equals(Object other)
+    {
+        // If the object is compared with itself then return true.
+        if (other == this) {
+            return true;
+        }
+        // Return false if other is null or not of the same class.
+        if ((other == null) || (other.getClass() != this.getClass())) {
+            return false;
+        }
+        // Other MUST be a Node at this point and need to cast it so Java treats it like a Node.
+        // typecast other to Node so that we can compare properties.
+        // Ignore warning since it has been pre-tested for everything else and the
+        // only thing left is that object is a Node.
+        @SuppressWarnings("unchecked") Node<V> c = (Node<V>) other;
+        // Compare the value properties and return accordingly.
+        // Handles simple types or objects for value.
+        return value == c.value || (null != value && value.equals(c.value));
     }
 
     /**
@@ -130,6 +176,25 @@ public class Node<V extends Comparable<V>> implements Comparable<Node<V>>
     public V getValue()
     {
         return this.value;
+    }
+
+    /**
+     * Custom hashing of Nodes.
+     * <p>
+     * MUST override hashCode() if equals() is overridden.
+     * <p>
+     * Only the value property needs to be part of the hash not all properties.
+     *
+     * @return Returns hash as an integer.
+     * @see Node::equals()
+     */
+    @Override
+    public int hashCode()
+    {
+        // 7 * 31
+        int hash = 217;
+        hash += (null == value ? 0 : value.hashCode());
+        return hash;
     }
 
     /**
