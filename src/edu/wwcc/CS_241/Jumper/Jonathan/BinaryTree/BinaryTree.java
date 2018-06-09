@@ -3,29 +3,29 @@ package edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree;
 @SuppressWarnings("WeakerAccess")
 public class BinaryTree<V extends Comparable<V>>
 {
-    public boolean insertAt(int index, Node<V> newNode)
-    {
-        // Handle inserting at start of LL.
-        if (0 == index) {
-            return prepend(newNode);
-        }
-        // Handle inserting at end of LL.
-        if (count == index) {
-            return append(newNode);
-        }
-        // Find the middle insertion point.
-        Node<V> located = findAt(index);
-        // Set new node to point to prev node.
-        newNode.setPrev(located.getPrev());
-        // Point prev node to new node.
-        newNode.getPrev().setNext(newNode);
-        // Point located node to new node.
-        located.setPrev(newNode);
-        // Point new node to located node.
-        newNode.setNext(located);
-        ++count;
-        return false;
-    }
+    //    public boolean insertAt(int index, Node<V> newNode)
+    //    {
+    //        // Handle inserting at start of LL.
+    //        if (0 == index) {
+    //            return prepend(newNode);
+    //        }
+    //        // Handle inserting at end of LL.
+    //        if (count == index) {
+    //            return append(newNode);
+    //        }
+    //        // Find the middle insertion point.
+    //        Node<V> located = findAt(index);
+    //        // Set new node to point to prev node.
+    //        newNode.setPrev(located.getPrev());
+    //        // Point prev node to new node.
+    //        newNode.getPrev().setNext(newNode);
+    //        // Point located node to new node.
+    //        located.setPrev(newNode);
+    //        // Point new node to located node.
+    //        newNode.setNext(located);
+    //        ++count;
+    //        return false;
+    //    }
 
     /**
      * Prepend new Node to LL.
