@@ -5,7 +5,6 @@
  * 4-11-18
  */
 package edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree;
-
 /**
  * linkedlist class
  * <p>
@@ -17,300 +16,367 @@ package edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree;
  *
  * Remember you are always just working with instances of a class not
  * the class itself.
- * The `head` property just points to the first instance of a edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node class.
+ * The `head` property just points to the first instance of a
+ * edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node class.
  */
-//@SuppressWarnings("WeakerAccess")
-//public class LinkedList<L> {
-//    // changed permission to protected so I can extend LL class to edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Queue
-//    // "head;" is the 1st instance of the "edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node<L>" class.
-//    protected Node<L> head;
-//
-//    /**
-//     * Constructor
-//     */
-//    public LinkedList()
-//    {
-//        this.head = null;
-//    }
-//
-//    /**
-//     * @param value
-//     *     <L> Passes (Value) into append method | edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.Main property.
-//     */
-//    public void append(L value)
-//    {
-//
-//        /*
-//         * If the list is empty set the head to new mode
-//         */
-//        if (this.head == null)
-//        {
-//            // Creates a new node and stuffs Value into it
-//            this.head = new Node<>(value);
-//            return;
-//        }
-//        Node<L> traveler = getLast();
-//
-//        /*
-//         * At this point, traveler points to last node
-//         */
-//        traveler.setNext(new Node<>(value));
-//    }
-//
-//    /**
-//     * Got last linked node.
-//     *
-//     * @return edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node<L>|null Returns edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node or NULL.
-//     */
-//    public Node<L> getLast()
-//    {
-//
-//        /*
-//         * Finds the last edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node
-//         */
-//        Node<L> last = this.head;
-//        while (last.getNext() != null)
-//        {
-//            last = last.getNext();
-//        }
-//        return last;
-//    }
-//
-//    /**
-//     * Insert new value at index.
-//     *
-//     * @param value
-//     *     int
-//     * @param index
-//     *     int
-//     */
-//    public void insertAt(L value, int index)
-//    {
-//        int length = this.length();
-//        // Check for invalid conditions.
-//        if (0 == length && 0 != index)
-//        {
-//            throw new IndexOutOfBoundsException(" ** Linked list is empty ** ");
-//        }
-//        if (index < 0)
-//        {
-//            throw new IndexOutOfBoundsException(" ** Index is < 0 ** ");
-//        }
-//        if (length < index)
-//        {
-//            throw new IndexOutOfBoundsException(" ** Index is > list length ** ");
-//        }
-//        // Handle special case of index = 0.
-//        if (0 != index) // I was taught to reverse so if I just put = it will flag me first
-//        {
-//            // Needs to find the Parent edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node before the index
-//            // so new edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node can be added to parent's next pointer.
-//            --index; // This gets the value of the NODE AT THE INDEX of the node just before this index number
-//            // I want the new node to be at.
-//            // Initialization of vars for while loop.
-//            Node<L> parentNode = this.head; //Initially it starts with the 1st node in LL and stuffs it's head value into var parentNode
-//            Node<L> nextNode = this.head.getNext(); // "" takes the ".next" value of parentNode and stuffs it into nextNode
-//            int position = 0;
-//            // Loop until just before insert point.
-//            while (position < index)
-//            {
-//                parentNode = nextNode;
-//                nextNode = nextNode.getNext();
-//                ++position;
-//            }
-//            // Inserts new edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node value and link it with the old node
-//            // that was at this position.
-//            parentNode.setNext(new Node<>(value, nextNode));
-//        } else
-//        {
-//            // This calls my prepend method to create a LL if index == null
-//            this.prepend(value);
-//        }
-//    }
-//
-//    /**
-//     * Finds length of list.
-//     *
-//     * @return int
-//     */
-//    public int length()
-//    {
-//        /*
-//        Creates new variable count to store value of next
-//         */
-//        int count = 0;
-//        if (this.head != null)
-//        {
-//            Node<L> left = this.head;
-//            do
-//            {
-//                left = left.getLeft();
-//                // ++ before because we're not using the value of count at this point
-//                // we're only returning the value of count when the condition is false
-//                ++count;
-//            } while (left != null);
-//        }
-//        return count;
-//    }
-//
-//    /**
-//     * Looks at head of LL
-//     *
-//     * @return edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node<L> Returns the head of list.
-//     */
-//    public L peek()
-//    {
-//        return head.getValue();
-//    }
-//
-//    /**
-//     * PREPEND METHOD
-//     *
-//     * @param value
-//     *     <L> Value for the node.
-//     */
-//    public void prepend(L value)
-//    {
-//        if (this.head == null) // Checks to see if its the only node
-//        {
-//            this.append(value);
-//        } else
-//        {
-//            // This is a way to increase efficiency of my code.
-//            // Instead of create a temporary local variable to assign to the new
-//            // node's next you can do it in a single step by using the other node constructor.
-//            // Instead I didn't need to create an empty node
-//            // and assign the value of head to next and then discard
-//            // the temporary pointer to the old node.
-////            edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node<L> temp = this.head; *Deprecated*
-//            this.head = new Node<>(value, this.head);
-////            this.head.setNext(temp); *Deprecated*
-//        }
-//    }
-//
-//    /**
-//     * Print edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.LinkedList Method
-//     */
-//    public void print()
-//    {
-//        Node<L> traveler = this.head;
-//        while (traveler != null)
-//        {
-//            System.out.print("Value(" + traveler.getValue() + ")--->");
-//            //System.out.print(traveler); //*test* <-Traveler at this point
-//            System.out.print("");
-//            traveler = traveler.getNext();
-//            //System.out.print(traveler); //*test* <-Traveler at this point
-//        }
-//        //System.out.print(traveler.getValue());
-//        System.out.println();
-//    }
-//
-//    /**
-//     * @param index
-//     *     int
-//     *
-//     * @return <L>
-//     */
-//    public L removeAt(int index)
-//    {
-//        if (this.head == null)
-//        {
-//            throw new IndexOutOfBoundsException();
-//        }
-//        if (index < 0)
-//        {
-//            throw new IndexOutOfBoundsException();
-//        }
-//        Node<L> trailer = null;
-//        Node<L> traveler = this.head;
-//        int position = 0;
-//        while (traveler != null && position != index)
-//        {
-//            trailer = traveler;
-//            traveler = traveler.getNext();
-//            ++position;
-//        }
-//        if (traveler == null)
-//        {
-//            throw new IndexOutOfBoundsException(" * NO LIST * ");
-//        }
-//        if (trailer == null)
-//        {
-//            L value = this.head.getValue();
-//            this.head = this.head.getNext();
-//            return value;
-//            // return this.removeFirst();
-//        }
-//        L value = traveler.getValue();
-//        trailer.setNext(traveler.getNext());
-//        return value;
-//    }
-//
-//    /**
-//     * @return <L>
-//     */
-//    public L removeFirst()
-//    {
-//        if (this.head == null)
-//        {
-//            throw new IndexOutOfBoundsException();
-//        }
-//        /*
-//         * this will create a new local var
-//         * of the edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node type
-//         * this.head passes the value of the "next"
-//         * from the first edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node to removedNode local var
-//         */
-//        Node<L> removedNode = this.head;
-//        /*
-//         * this takes the value of head from the 2nd edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node
-//         * and makes it the value of Head for the Second edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node?
-//         */
-//        this.head = this.head.getNext();
-//        /*
-//         * this takes the value of Next from the First node
-//         * and makes its Next Null
-//         * thus severing it completely from the Linked List
-//         */
-//        removedNode.setNext(null);
-//        /* return removedNode;
-//        edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node removedNode = this.head;
-//        int value = this.head.getValue();
-//        this.head = this.head.getNext();
-//        */
-//        return removedNode.getValue();
-//        //return value;
-//    }
-//
-//    /**
-//     * @return <L>
-//     */
-//    public L removeLast()
-//    {
-//        if (this.head == null)
-//        {
-//            throw new IndexOutOfBoundsException(" * edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.LinkedList Empty * ");
-//        }
-//        if (this.head.getNext() == null)
-//        {
-//            return this.removeFirst();
-//        }
-//        // Find second to last edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node
-//        Node<L> traveller = this.head;
-//        while (traveller.getNext().getNext() != null)
-//        {
-//            traveller = traveller.getNext();
-//        }
-//        Node<L> secondToLastNode = traveller;
-//        Node<L> lastNode = traveller.getNext();
-//
-//        /*
-//         Remove pointer from second to last edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node,
-//         to last edu.wwcc.CS_241.Jumper.Jonathan.edu.wwcc.CS_241.Jumper.Jonathan.BinaryTree.BinaryTree.Node
-//         */
-//        L value = lastNode.getValue();
-//        secondToLastNode.setNext(null);
-//        return value;
-//    }
-//}
+@SuppressWarnings("WeakerAccess")
+public class LinkedList<V extends Comparable<V>>
+{
+    /**
+     * Constructor
+     */
+    public LinkedList()
+    {
+        node = null;
+        count = 0;
+    }
+
+    /**
+     * Constructor with Node param.
+     * <p>
+     * Jonathan speak.
+     *
+     * @param newNode Node<V>
+     */
+    public LinkedList(Node<V> newNode)
+    {
+        node = newNode;
+        count = length();
+    }
+
+    /**
+     * Append generic value as new Node to LL.
+     *
+     * @param value Generic value for new Node.
+     *
+     * @return LinkedList<V> Fluent interface.
+     */
+    public LinkedList<V> append(V value)
+    {
+        return append(new Node<>(value)); //creates new node and call other append() method
+        // when 1st append() method is called
+        // this uses node constructor from Node(class)
+        // so, the new node has the value and the pointers are both null at this point.
+    }
+
+    /**
+     * Append new Node to LL.
+     *
+     * @param newNode New Node to be prepend to LL.
+     *
+     * @return LinkedList<V> Fluent interface.
+     */
+    public LinkedList<V> append(Node<V> newNode)
+    {
+        if (null != this.node) {
+            //find the end of the ll and append to it.
+            Node<V> last = getLast(); //used to be Traveler (last)
+            last.setLeft(newNode);
+            newNode.setAncestor(last);
+        } else {
+            this.node = newNode;
+        }
+        ++this.count;
+        return this;
+    }
+
+    /**
+     * Get first node of LL.
+     *
+     * @return Node<V>
+     */
+    public Node<V> getFirst()
+    {
+        return node;
+    }
+
+    /**
+     * Get last linked node.
+     *
+     * @return Node<L>|null Returns Node or NULL.
+     * @throws IndexOutOfBoundsException Throws IndexOutOfBoundsException when LL is empty.
+     */
+    public Node<V> getLast()
+    {
+        if (null != this.node) {
+            // Start with first Node.
+            Node<V> last = this.node;
+            while (null != last.getLeft()) { // replaces Left pointer value in LL
+                last = last.getLeft();
+            }
+            return last;
+        } else {
+            throw new IndexOutOfBoundsException(" * Linked list is empty * ");
+        }
+    }
+
+    /**
+     * Insert a new node at the given index.
+     *
+     * @param index   Where to insert new node.
+     * @param newNode Node to be inserted.
+     *
+     * @return LinkedList<V> Fluent interface.
+     */
+    public LinkedList<V> insertAt(int index, Node<V> newNode)
+    {
+        // Handle inserting at start of LL.
+        if (0 == index) {
+            return prepend(newNode);
+        }
+        // Handle inserting at end of LL.
+        if (count == index) {
+            return append(newNode);
+        }
+        // Find the middle insertion point.
+        Node<V> located = findAt(index);
+        // Set new node to point to prev node.
+        newNode.setPrev(located.getPrev());
+        // Point prev node to new node.
+        newNode.getPrev().setNext(newNode);
+        // Point located node to new node.
+        located.setPrev(newNode);
+        // Point new node to located node.
+        newNode.setNext(located);
+        ++count;
+        return this;
+    }
+
+    /**
+     * Insert a new value at the given index.
+     *
+     * @param index Where to insert new value.
+     * @param value Value to be inserted.
+     *
+     * @return LinkedList<V> Fluent interface.
+     */
+    public LinkedList<V> insertAt(int index, V value)
+    {
+        return insertAt(index, new Node<>(value));
+    }
+
+    /**
+     * @return int Returns length of LL.
+     */
+    public int length()
+    {
+        int count = 0;
+        Node<V> current = node;
+        while (null != current) {
+            current = current.getNext();
+            ++count;
+        }
+        return count;
+    }
+
+    /**
+     * Prepend new Node to LL.
+     *
+     * @param newNode New Node to be prepend to LL.
+     *
+     * @return LinkedList<V>
+     */
+    public LinkedList<V> prepend(Node<V> newNode)
+    {
+        // Checks to see if its the only newNode
+        if (null != node) {
+            newNode.setNext(node);
+            node.setPrev(newNode);
+            node = newNode;
+        } else {
+            node = newNode;
+        }
+        ++count;
+        return this;
+    }
+
+    /**
+     * Prepend new value to LL.
+     *
+     * @param value New value to be prepend to LL.
+     *
+     * @return LinkedList<V>
+     */
+    public LinkedList<V> prepend(V value)
+    {
+        return prepend(new Node<>(value));
+    }
+
+    /**
+     * @param index int
+     *
+     * @return V
+     */
+    public V removeAt(int index)
+    {
+        // Handle removing at start of LL.
+        if (0 == index) {
+            return removeFirst();
+        }
+        // Find Node to be removed.
+        Node<V> remove = findAt(index);
+        // Only need to update prev if it is not null.
+        if (null != remove.getPrev()) {
+            // Update prev Node's next with next Node of Node being removed.
+            // Could be Node or null it does not matter.
+            remove.getPrev().setNext(remove.getNext());
+        }
+        // Only need to update prev if next is a Node.
+        // Can't update if it is null.
+        if (null != remove.getNext()) {
+            // Update next Node's prev with prev Node of Node being removed.
+            remove.getNext().setPrev(remove.getPrev());
+        }
+        --count;
+        // Assist garbage collection by clearing prev and next before returning value.
+        return remove.setPrev(null).setNext(null).getValue();
+    }
+
+    /**
+     * @return V
+     */
+    public V removeFirst()
+    {
+        if (null == node) {
+            throw new IndexOutOfBoundsException(" * LinkedList is empty * ");
+        }
+        V value = node.getValue();
+        node = node.getNext();
+        if (null != node) {
+            node.setPrev(null);
+        }
+        --count;
+        return value;
+    }
+
+    /**
+     * @return <L>
+     */
+    public V removeLast()
+    {
+        return removeAt(count - 1);
+    }
+
+    /**
+     * Replace node at the given index.
+     *
+     * @param index   Where to insert new node.
+     * @param newNode Node to replace with.
+     *
+     * @return Node<V> Returns the replaced node.
+     */
+    public Node<V> replaceAt(int index, Node<V> newNode)
+    {
+        // Find the replacement point.
+        Node<V> located = findAt(index);
+        // Set new node to point to prev node.
+        newNode.setPrev(located.getPrev());
+        // Point new node to next node.
+        newNode.setNext(located.getNext());
+        // Only update when a prev node.
+        if (null != located.getPrev()) {
+            // Point prev node to new node.
+            located.getPrev().setNext(newNode);
+        }
+        // Only update when a next node.
+        if (null != located.getNext()) {
+            // Point next node back to new node.
+            located.getNext().setPrev(newNode);
+        }
+        // Break prev and next links before returning.
+        return located.setPrev(null).setNext(null);
+    }
+
+    /**
+     * Replace value at the given index.
+     *
+     * @param index Where to insert new node.
+     * @param value Value to replace with.
+     *
+     * @return V Returns the replaced value.
+     */
+    public V replaceAt(int index, V value)
+    {
+        return replaceAt(index, new Node<>(value)).getValue();
+    }
+
+    /**
+     * Setter for node property.
+     *
+     * @param newNode Node to use as start of LL.
+     *
+     * @return LinkedList<V>
+     */
+    public LinkedList<V> setNode(Node<V> newNode)
+    {
+        node = newNode;
+        count = length();
+        return this;
+    }
+
+    /**
+     * This just returns the value of count property (method in jonathan speak)
+     *
+     * @return int
+     */
+    public int size()
+    {
+        return count;
+    }
+
+    /**
+     * @return String
+     */
+    public String toString()
+    {
+        String output = "";
+        Node<V> traveler = node;
+        while (null != traveler) {
+            output = output.concat("Value(" + traveler.getValue() + ")--->");
+            // Can use this to print the next, or the prev, and etc.
+            traveler = traveler.getNext();
+            if (null == traveler) {
+                output = output.concat("null");
+            }
+        }
+        return output;
+    }
+
+    /**
+     * Find the node at given index.
+     * <p>
+     * Used by other *At() methods to find their Node of interest.
+     *
+     * @param index Position of node to find.
+     *
+     * @return Node<V> Returns the found Node.
+     * @throws IndexOutOfBoundsException Throws IndexOutOfBoundsException when index is negative, or index beyond end of
+     *                                   list.
+     */
+    protected Node<V> findAt(int index)
+    {
+        if (0 > index) {
+            throw new IndexOutOfBoundsException(" * Index can not be negative * ");
+        }
+        if (index >= count) {
+            throw new IndexOutOfBoundsException(" * Index beyond end of list * ");
+        }
+        int position = 0;
+        // Start at first node and walk until correct node found.
+        Node<V> current = node;
+        while (position != index) {
+            current = current.getNext();
+            ++position;
+        }
+        return current;
+    }
+
+    /**
+     * Used to track number of nodes.
+     */
+    private int count;
+    /**
+     * Holds the first node in the linked list.
+     */
+    private Node<V> node;
+}
